@@ -2,7 +2,6 @@
 
 class CuentaBancarias
     attr_accessor :nombre_usuario, :numero_de_cuenta, :cuenta_vip
-    
     attr_reader :n
 
     def initialize(nombre_usuario, numero_de_cuenta, cuenta_vip = 0)
@@ -14,6 +13,8 @@ class CuentaBancarias
         @nombre_usuario = nombre_usuario
         @numero_de_cuenta = numero_de_cuenta
         @cuenta_vip = cuenta_vip
+        #Valor para completar los 8 digitos de la cuenta
+        #en caso de que sea menor (Ingresar algo como 00112233 genera un Integer diferente)
         @n = 8 - numero_de_cuenta.digits.count
     end
 

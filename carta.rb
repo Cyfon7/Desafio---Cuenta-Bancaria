@@ -1,7 +1,7 @@
 #Ejercicio 1
 
 class Carta
-    attr_accessor :numero, :pinta
+    attr_accessor :numero, :pinta, :mano
     def initialize(numero, pinta)
         #Excepcion para numero
         raise ArgumentError, "\nArgumento numero debe estar entre 1 - 13" if (numero<1 || numero>13)
@@ -11,10 +11,13 @@ class Carta
         @numero = numero
         @pinta = pinta
     end
-end
 
-mazo = []
-5.times do |i|
-    mazo.push Carta.new(rand(1..13),['C','D','E','T'].sample)
-    puts "Carta #{i+1}: #{mazo[i].numero}-#{mazo[i].pinta}"
+    #Genera una mano de 5 cartas al azar
+    def self.mano
+        @mano = []
+        5.times do |i|
+            @mano.push Carta.new(rand(1..13),['C','D','E','T'].sample)
+        end
+        @mano
+    end
 end
